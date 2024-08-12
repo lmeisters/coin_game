@@ -1,0 +1,191 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f9f9f9;
+}
+
+/* Container Styles */
+.container {
+    text-align: center;
+}
+
+/* Grid Styles */
+.grid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    /* gap: 10px; */
+    margin-bottom: 20px;
+}
+
+/* Cell Styles */
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    border: solid 2px black;
+}
+
+/* State-specific Cell Styles */
+.cell.occupied {
+    background-color: #faf4b7;
+}
+
+.cell.deposit {
+    background-color: #00cc66;
+}
+
+.cell.conveyor {
+    background-color: #ecc5fb;
+}
+
+/* Indicator Arrow Styles */
+.cell::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    position: absolute;
+}
+
+/* Direction Indicators for Occupied Cells */
+.cell.occupied[data-direction="0"]::after {
+    /* Right */
+    border-width: 10px 0 10px 20px;
+    border-color: transparent transparent transparent black;
+    right: 5px;
+    transform: rotate(0deg);
+}
+
+.cell.occupied[data-direction="1"]::after {
+    /* Left */
+    border-width: 10px 20px 10px 0;
+    border-color: transparent black transparent transparent;
+    left: 5px;
+    transform: rotate(0deg);
+}
+
+.cell.occupied[data-direction="2"]::after {
+    /* Up */
+    border-width: 20px 10px 0 10px;
+    border-color: black transparent transparent transparent;
+    top: 5px;
+    transform: rotate(180deg);
+}
+
+.cell.occupied[data-direction="3"]::after {
+    /* Down */
+    border-width: 0 10px 20px 10px;
+    border-color: transparent transparent black transparent;
+    bottom: 5px;
+    transform: rotate(180deg);
+}
+
+/* Direction Indicators for Conveyor Cells */
+.cell.conveyor[data-direction="0"]::after {
+    /* Right */
+    border-width: 10px 0 10px 20px;
+    border-color: transparent transparent transparent black;
+    right: 5px;
+    transform: rotate(0deg);
+}
+
+.cell.conveyor[data-direction="1"]::after {
+    /* Left */
+    border-width: 10px 20px 10px 0;
+    border-color: transparent black transparent transparent;
+    left: 5px;
+    transform: rotate(0deg);
+}
+
+.cell.conveyor[data-direction="2"]::after {
+    /* Up */
+    border-width: 20px 10px 0 10px;
+    border-color: black transparent transparent transparent;
+    top: 5px;
+    transform: rotate(180deg);
+}
+
+.cell.conveyor[data-direction="3"]::after {
+    /* Down */
+    border-width: 0 10px 20px 10px;
+    border-color: transparent transparent black transparent;
+    bottom: 5px;
+    transform: rotate(180deg);
+}
+
+/* Information Section Styles */
+.info {
+    font-size: 18px;
+}
+
+/* Button Styles */
+button {
+    background-color: #eee;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    width: 10em;
+    border-radius: 1rem;
+    /* color: lightcoral; */
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:active {
+    color: white;
+    box-shadow: 0 0.2rem #dfd9d9;
+    transform: translateY(0.2rem);
+}
+
+button:hover:not(:disabled) {
+    background: lightcoral;
+    color: white;
+}
+
+button:disabled {
+    cursor: auto;
+    color: grey;
+}
+
+#delete-block:hover:not(:disabled) {
+    background-color: red;
+    color: white;
+}
+
+#place-deposit:hover:not(:disabled) {
+    background-color: #00cc66;
+    color: white;
+}
+
+#place-conveyor:hover:not(:disabled) {
+    background-color: #ecc5fb;
+    color: white;
+}
+
+/* Coin Styles */
+.coin {
+    width: 20px;
+    height: 20px;
+    background-color: gold;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: absolute;
+    display: none;
+    transition: transform 2s ease;
+    z-index: 1000;
+}
